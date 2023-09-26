@@ -3,6 +3,8 @@
 ## What is this?
 Main hub where all the content created for the Fall 2023 CART451 class by me(Arnaud Jalbert) will be publicly available.\
 \
+Weekly Reading Responses can be found [here](https://arnaudjalbert.github.io/CART451_hub/)\
+\
 The content includes:
 
 * Assignments
