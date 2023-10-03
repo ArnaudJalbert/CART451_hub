@@ -15,59 +15,63 @@ const responseA = document.querySelector("#responseA");
 
 buttonCallA.addEventListener("click", () => {
   console.log("click");
+  let returnedFruit = checkAuth_B(
+    document.querySelector("#user-string-A").value,
+    changeString_B,
+  );
 });
 
-// /*** option 1 :: everything happens as single functions */
-// function checkAuth_A(userString) {
-//   //console.log(userString);
-//   setTimeout(() => {
-//     let userFruit = "";
-//     if (userString === "Sabine") {
-//       userFruit = "pineapple";
-//     } else {
-//       userFruit = "noFruit";
-//     }
-//     console.log("time-out one-a complete " + userFruit);
-//     return userFruit;
-//   }, 5000); // let 5 secs go past then send back
-// }
+/*** option 1 :: everything happens as single functions */
+function checkAuth_A(userString) {
+  console.log(userString);
+  setTimeout(() => {
+    let userFruit = "";
+    if (userString === "Sabine") {
+      userFruit = "pineapple";
+    } else {
+      userFruit = "noFruit";
+    }
+    console.log("time-out one-a complete " + userFruit);
+    return userFruit;
+  }, 5000); // let 5 secs go past then send back
+}
 
-// function changeString_A(fruitString) {
-//   //console.log(userString);
-//   setTimeout(() => {
-//     let userFruitwithstars = fruitString.split("").join("*");
-//     console.log("time-out two-a complete " + fruitString);
-//     return userFruit;
-//   }, 5000); // let 5 secs go past then send back
-// }
+function changeString_A(fruitString) {
+  //console.log(userString);
+  setTimeout(() => {
+    let userFruitwithstars = fruitString.split("").join("*");
+    console.log("time-out two-a complete " + fruitString);
+    return userFruit;
+  }, 5000); // let 5 secs go past then send back
+}
 
 // /*** option 2 :: callback  */
 // //cb ==callback
-// function checkAuth_B(userString, cb) {
-//   //console.log(userString);
-//   setTimeout(() => {
-//     let userFruit = "";
-//     if (userString === "Sabine") {
-//       userFruit = "pineapple";
-//     } else {
-//       userFruit = "noFruit";
-//     }
-//     console.log("time-out one-b complete " + userFruit);
+function checkAuth_B(userString, cb) {
+  //console.log(userString);
+  setTimeout(() => {
+    let userFruit = "";
+    if (userString === "Sabine") {
+      userFruit = "pineapple";
+    } else {
+      userFruit = "noFruit";
+    }
+    console.log("time-out one-b complete " + userFruit);
 
-//     //CALL the callback function :)
-//     cb(userFruit);
-//   }, 5000); // let 5 secs go past then send back
-// }
+    //CALL the callback function :)
+    cb(userFruit);
+  }, 5000); // let 5 secs go past then send back
+}
 
-// function changeString_B(fruitString) {
-//   //console.log(userString);
-//   setTimeout(() => {
-//     let userFruitwithstars = fruitString.split("").join("*");
+function changeString_B(fruitString) {
+  //console.log(userString);
+  setTimeout(() => {
+    let userFruitwithstars = fruitString.split("").join("*");
 
-//     console.log("time-out two-b complete " + userFruitwithstars);
-//     return userFruitwithstars;
-//   }, 5000); // let 5 secs go past then send back
-// }
+    console.log("time-out two-b complete " + userFruitwithstars);
+    return userFruitwithstars;
+  }, 5000); // let 5 secs go past then send back
+}
 
 //for second-part of option callback - change string now also takes a callback parameter
 

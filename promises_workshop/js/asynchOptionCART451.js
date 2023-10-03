@@ -11,6 +11,24 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/asy
 const buttonCallJ = document.querySelector("#callbackJ");
 const responseJ = document.querySelector("#responseJ");
 
-buttonCallJ.addEventListener("click", function () {
+buttonCallJ.addEventListener("click", async function () {
   console.log("clicked");
+  let returnedFruit = await checkAuth_A(document.querySelector("#user-string-J").value)
+  console.log(returnedFruit)
 }); //button
+
+function checkAuth_A(userString) {
+  return new Promise((resolve, reject) => {
+    console.log(userString);
+    setTimeout(() => {
+      let userFruit = "";
+      if (userString === "Sabine") {
+        userFruit = "pineapple";
+        resolve("pineapple");
+      } else {
+        reject("noFruit");
+      }
+      console.log("time-out one-a complete " + userFruit);
+    }, 5000); // let 5 secs go past then send back
+  });
+}
