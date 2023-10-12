@@ -50,36 +50,36 @@ exports.get_all_drivers = async function (filter, sort) {
 };
 
 exports.get_championship_winning_drivers = async function () {
-  return get_all_drivers({ Champion: "True" }, { Championships: -1 });
+  return exports.get_all_drivers({ Champion: "True" }, { Championships: -1 });
 };
 
 exports.get_pole_sitting_drivers = async function () {
-  return get_all_drivers(
+  return exports.get_all_drivers(
     { Pole_Positions: { $gt: 0 } },
     { Pole_Positions: -1 },
   );
 };
 
 exports.get_race_winning_drivers = async function () {
-  return get_all_drivers({ Race_Wins: { $gt: 0 } }, { Race_Wins: -1 });
+  return exports.get_all_drivers({ Race_Wins: { $gt: 0 } }, { Race_Wins: -1 });
 };
 
 exports.get_race_winning_no_poles_drivers = async function () {
-  return get_all_drivers(
+  return exports.get_all_drivers(
     { Race_Wins: { $gt: 0 }, Pole_Positions: 0 },
     { Race_Wins: -1 },
   );
 };
 
 exports.get_pole_sitters_no_wins_drivers = async function () {
-  return get_all_drivers(
+  return exports.get_all_drivers(
     { Race_Wins: 0, Pole_Positions: { $gt: 0 } },
     { Pole_Positions: -1 },
   );
 };
 
 exports.get_drivers_active_at_least_n_years = async function (n) {
-  return get_all_drivers({ Years_Active: { $gt: n } }, { Years_Active: -1 });
+  return exports.get_all_drivers({ Years_Active: { $gte: n } }, { Years_Active: -1 });
 };
 
 async function main() {}
