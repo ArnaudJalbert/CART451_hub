@@ -79,7 +79,19 @@ exports.get_pole_sitters_no_wins_drivers = async function () {
 };
 
 exports.get_drivers_active_at_least_n_years = async function (n) {
-  return exports.get_all_drivers({ Years_Active: { $gte: n } }, { Years_Active: -1 });
+  return exports.get_all_drivers(
+    { Years_Active: { $gte: n } },
+    { Years_Active: -1 },
+  );
 };
 
-async function main() {}
+async function main() {
+  let drivers = await exports.get_championship_winning_drivers();
+  for (const driver of drivers) {
+    console.log(driver.Driver);
+    console.log(driver.Race_Wins);
+    console.log(driver.Pole_Positions);
+  }
+}
+
+main();

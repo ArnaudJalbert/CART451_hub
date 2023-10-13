@@ -1,7 +1,6 @@
 let particleSystem;
 let slider;
 let currentYear;
-let F1DriversActiveYears;
 let particleSize;
 
 async function getF1DriversActiveYears(year) {
@@ -9,6 +8,10 @@ async function getF1DriversActiveYears(year) {
     `f1_drivers_years_active/years=${year}`,
   );
   return await F1DriversActiveYearsResponse.json();
+}
+
+function getParticleSize(driversAmount) {
+  return 838 / driversAmount + 20;
 }
 
 async function setup() {
@@ -25,7 +28,6 @@ async function setup() {
 
   // particles setup
   particleSystem = new ParticleSystem();
-  particleSize = 10;
 
   // setting the initional particles
   await particleSystem.setParticles(currentYear);
@@ -70,20 +72,16 @@ async function draw() {
   ellipse((22 * window.innerWidth) / 32, window.innerHeight - 20, 20);
   fill("#000000");
   textSize(20);
-  text(
-      "= Winner",
-      (22 * window.innerWidth) / 32 + 10,
-      window.innerHeight - 15,
-  );
+  text("= Winner", (22 * window.innerWidth) / 32 + 10, window.innerHeight - 15);
 
   fill("#41BBD9");
   ellipse((24.5 * window.innerWidth) / 32, window.innerHeight - 20, 20);
   fill("#000000");
   textSize(20);
   text(
-      "= Pole Sitter",
-      (24.5 * window.innerWidth) / 32 + 10,
-      window.innerHeight - 15,
+    "= Pole Sitter",
+    (24.5 * window.innerWidth) / 32 + 10,
+    window.innerHeight - 15,
   );
 
   fill("#555B6E");
@@ -91,9 +89,9 @@ async function draw() {
   fill("#000000");
   textSize(20);
   text(
-      "= No Pole/Win",
-      (27.5 * window.innerWidth) / 32 + 10,
-      window.innerHeight - 15,
+    "= No Pole/Win",
+    (27.5 * window.innerWidth) / 32 + 10,
+    window.innerHeight - 15,
   );
 }
 
@@ -126,8 +124,10 @@ class Particle {
   }
 
   animate() {
-    this.x = this.x + (Math.random() * 0.4 - 0.2);
-    this.y = this.y + (Math.random() * 0.4 - 0.2);
+    this.x =
+      this.x + Math.random() * 0.01 * particleSize - 0.005 * particleSize;
+    this.y =
+      this.y + Math.random() * 0.01 * particleSize - 0.005 * particleSize;
   }
 }
 
@@ -148,13 +148,11 @@ class ParticleSystem {
   async setParticles() {
     this.clearParticles();
     currentYear = slider.value();
-    // get the f1 drivers data
     this.F1Drivers = await getF1DriversActiveYears(currentYear);
+    particleSize = getParticleSize(this.F1Drivers.length);
     for (const F1Driver of this.F1Drivers) {
       particleSystem.addParticle(F1Driver);
     }
-    particleSize = 838 / this.F1Drivers.length + 20;
-    console.log(particleSize);
   }
 
   show() {
