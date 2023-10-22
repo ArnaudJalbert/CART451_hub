@@ -1,0 +1,15 @@
+{
+  "name": "montreal_data_presentation",
+  "version": "1.0.0",
+  "description": "Simple visualization of Montreal data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "fast-csv": "^4.3.6"
+  }
+}
