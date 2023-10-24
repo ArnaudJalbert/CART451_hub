@@ -22,14 +22,14 @@ window.onload = async () => {
     await pedestrian_lights_with_sound_signal_json.data;
 
   // set the marker on the map to where the pedestrian lights are located
-  set_pedestrian_lights_marker(
+  set_pedestrian_lights_markers(
     map,
     pedestrian_lights,
     pedestrian_lights_with_sound_signal,
   );
 };
 
-function set_pedestrian_lights_marker(
+function set_pedestrian_lights_markers(
   map,
   pedestrian_lights,
   pedestrian_lights_with_sound_signal,

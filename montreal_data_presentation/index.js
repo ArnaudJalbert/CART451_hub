@@ -6,7 +6,6 @@ const { DataSource } = require("mtl-data");
 // not useful now since we're using Micheal's library
 // data from here: https://donnees.montreal.ca/dataset/feux-pietons
 const PEDESTRIANS_LIGHTS_CSV_PATH = "./data/feux-pietons.csv";
-// data from here: https://donnees.montreal.ca/dataset/feux-malvoyants
 const PEDESTRIANS_LIGHTS_WITH_SOUND_SIGNAL_CSV_PATH =
   "./data/traverses-pietonnes-signal-sonore.csv";
 
@@ -24,6 +23,7 @@ app.get("/", (req, res) => {
 
 app.get("/pedestrian_lights", async (req, res) => {
   let pedestrians_lights = await get_pedestrian_lights();
+  console.log(pedestrians_lights)
   res.send(pedestrians_lights);
 });
 
