@@ -9,14 +9,17 @@ window.onload = async () => {
 
   // get the pedestrian lights data
   const pedestrian_lights_response = await fetch("/pedestrian_lights");
-  const pedestrian_lights = await pedestrian_lights_response.json();
+  const pedestrian_lights_json = await pedestrian_lights_response.json();
+  const pedestrian_lights = await pedestrian_lights_json.data;
 
   // get the pedestrian lights with sound signals data
   const pedestrian_lights_with_sound_signal_response = await fetch(
     "/pedestrian_lights_with_sound_signal",
   );
-  const pedestrian_lights_with_sound_signal =
+  const pedestrian_lights_with_sound_signal_json =
     await pedestrian_lights_with_sound_signal_response.json();
+  const pedestrian_lights_with_sound_signal =
+    await pedestrian_lights_with_sound_signal_json.data;
 
   // set the marker on the map to where the pedestrian lights are located
   set_pedestrian_lights_marker(
